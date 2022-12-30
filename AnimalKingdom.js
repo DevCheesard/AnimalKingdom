@@ -1,5 +1,5 @@
-//This is the abstract base class from which subclasses will inherit
-//The KingdomAnimalia class encapsulates the attributes (name, species, diet, and habitat) and behaviors (move, eat, and reproduce) of an animal in a single place.
+//This is the abstract class from which subclasses will inherit
+//The KingdomAnimalia class shows the attributes (name, species, diet, and habitat) and behaviors (move, eat, and reproduce) of an animal in a single place.
 class KingdomAnimalia {
     constructor(name, species, diet, habitat) {
         if(this.constructor === KingdomAnimalia){
@@ -69,7 +69,8 @@ class NoBackbone extends KingdomAnimalia {
     }
   }
  
-  
+  //The Aves class overrides the move behavior inherited from the KingdomAnmalia class to specify that birds fly rather than move in a general sense.
+  // This shows polymorphism
   class Aves extends HasBackbone {
     constructor(name, species, diet, habitat, numWings) {
       super(name, species, diet, habitat);
@@ -80,20 +81,8 @@ class NoBackbone extends KingdomAnimalia {
       console.log(`${this.name} is flying.`);
     }
   }
-  //The Aves class overrides the move behavior inherited from the KingdomAnmalia class to specify that birds fly rather than move in a general sense.
-  // This shows polymorphism
 
-
-  //We can use abstraction to hide the implementation details of certain behaviors and only expose the necessary interface to the user. For example:
-  
-  class Reptile extends HasBackbone {
-    constructor(name, species, diet, habitat, numLegs) {
-      super(name, species, diet, habitat);
-      this.numLegs = numLegs
-    }
-  }
-
-  class Amphibian extends HasBackbone {
+  class Amphibia extends HasBackbone {
     constructor(name, species, diet, habitat, numLegs) {
       super(name, species, diet, habitat);
       this.numLegs = numLegs;
@@ -118,4 +107,22 @@ class NoBackbone extends KingdomAnimalia {
       console.log(`${this.name} is crawling.`);
     }
   }
+  //Using abstraction to hide the implementation details of certain behaviors and only expose the necessary interface to the user. For example:
   
+  class Reptile extends HasBackbone {
+    constructor(name, species, diet, habitat, numLegs) {
+      super(name, species, diet, habitat);
+      this.numLegs = numLegs
+    }
+  }
+
+// Instantiating Objects from the subclasses above.
+
+const arthropoda = new Arthropoda ('Arthropoda');
+const fish = new Fish ('Fish');
+const amphibia = new Amphibia('Amphibia');
+const reptile = new Reptile('Reptile');
+const aves = new Aves('AVES');
+const mammal = new Mammal('Mammal');
+
+const animalia = [arthropoda, fish, amphibia, reptile, aves, mammal];
